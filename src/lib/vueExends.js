@@ -4,5 +4,5 @@
 import  Vue from 'vue';
 /* 设置 语言*/
 Vue.prototype.setLangs = function (fileName) {
-  return require(`src/assets/langs/${localStorage.getItem('language')}/${fileName}.js`);
+  return require(`src/langs/${localStorage.getItem('language')}/${fileName}.js`);
 }

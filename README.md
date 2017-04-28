@@ -22,5 +22,5 @@ npm run build
 * `src/css` - put custom app CSS styles here. Don't forget to import them in `main.js`
 * `src/pages` - app `.vue` pages
 * `src/main.js` - main app file where you include/import all required libs and init app
-* `src/routes.js` - app routes
+* `src/index.js` - app routes
 * `src/app.vue` - main app structure/component

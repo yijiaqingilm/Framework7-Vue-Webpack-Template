@@ -89,6 +89,11 @@
                             </f7-list-item>
                             <f7-list-item link="scroll">goto scroll页面</f7-list-item>
                             <f7-list-item link="/scroll2component">goto scroll2component</f7-list-item>
+                            <f7-list-item link="/test_input">goto test input</f7-list-item>
+                            <f7-list-item link="/user/order">goto user order</f7-list-item>
+                            <f7-list-item link="/sell/profile">goto sell profile</f7-list-item>
+                            <f7-list-item link="/pay">goto pay</f7-list-item>
+                            <f7-list-item link="/gardener/order">/gardener/order</f7-list-item>
                         </f7-list>
                         <f7-block-title>Side Panels</f7-block-title>
                         <f7-block>

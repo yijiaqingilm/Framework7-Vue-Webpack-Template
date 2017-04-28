@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+
+    function add() {
+        var param = Array.prototype.slice.call(arguments);
+        var isNumber = function (value) {
+            return Object.prototype.toString.call(value) === '[object Number]';
+        }
+        var make = false;
+        for (var i = 0; i < param.length; i++) {
+            if (!isNumber(param[i])) {
+                make = true;
+                break;
+            }
+        }
+        if (make) {
+            return void (0);
+        }
+        if (param.length == 1) {
+            return function () {
+                if (!isNumber(arguments[0])) {
+                    return void (0);
+                }
+                return param[0] + arguments[0]
+            };
+        } else if (param.length == 2) {
+            return param.reduce(function (a, b) {
+                return a + b;
+            });
+        }
+
+
+    }
+    console.log(add(1)('3'));
+</script>
+</html>

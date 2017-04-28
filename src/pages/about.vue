@@ -1,6 +1,6 @@
 <template>
     <f7-page>
-        <f7-navbar title="About" back-link="Back" sliding></f7-navbar>
+        <f7-navbar title="AboAboutAboutAboutAboutAboutAboutAboutut" back-link="Back" sliding></f7-navbar>
         <f7-block inner>
             <p class="">Here is About page!</p>
             <p>You can go

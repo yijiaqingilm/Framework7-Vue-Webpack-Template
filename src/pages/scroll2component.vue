@@ -9,7 +9,6 @@
                             <div class="item-title">{{item.type}}</div>
                         </div>
                     </li>
-
                 </ul>
             </div>
         </f7-block>
@@ -33,37 +32,31 @@
             }
         },
         created: function () {
-            for (var i = 0; i < 20; i++) {
-                var obj = {
-                    title: 'title ' + i,
-                    type: 'item' + i
-                }
-                this.dataList.push(obj);
-            }
             console.log(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
         },
         components: {InfiniteLoading},
         methods: {
             loadData: function () {
-                console.log('触发loaddata');
-                this.$http.post('/mobile/type-list').then(response => {
-                    var result = response.body.data;
-                    if (result.length > 0) {
-                        this.dataList = [].concat(this.dataList).concat(result);
-                        this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
-                        this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete');
-                        console.log('complete')
-                    } else {
-                        // this.$refs.infiniteLoading.$emit('$infiniteLoading:complete')
-                    }
-
-                });
+                setTimeout(function () {
+                    this.getData().then(result => {
+                        console.log(result);
+                        if (result.length > 0) {
+                            this.dataList = [].concat(this.dataList).concat(result);
+                            this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
+                        } else {
+                            this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete');
+                        }
+                    });
+                }.bind(this), 3000);
+            },
+            getData: function (url, param, callFun) {
+                return this.$http.post('/mobile/type-list').then(response => response.body.data).catch(err => err);
             }
         }
     }
 </script>
 <style lang="scss" scoped type="text/css">
-    @import "../assets/static/sass/scroll.scss";
+    @import "../css/scroll.scss";
 
     .list-block {
         font-size: 16px;

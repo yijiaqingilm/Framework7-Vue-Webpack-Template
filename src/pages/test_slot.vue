@@ -12,7 +12,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-    import common from 'src/assets/static/js/common.js'
+    import common from 'src/lib/common.js'
     import Child from 'src/components/myComponent.vue'
     export default {
         data(){
