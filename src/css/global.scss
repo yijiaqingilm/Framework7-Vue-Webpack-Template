@@ -1,5 +1,14 @@
-@function setFontSize($size) {
-
-  @return $size
+@mixin setFontSize($fontSize) {
+  @media screen and (max-width: 320px) {
+    font-size: $fontSize - 1;
+  }
+  @media screen and (min-width: 321px) and (max-width: 375px) {
+    font-size: $fontSize;
+  }
+  @media screen and (min-width: 376px) {
+    font-size: $fontSize + 1;
+  }
 }
+
+
 

@@ -1,7 +1,11 @@
+var webpack = require('webpack')
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+
+var px2rem = require('postcss-px2rem');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -9,7 +13,8 @@ function resolve(dir) {
 
 module.exports = {
     entry: {
-        app: './src/main.js'
+        app: './src/main.js',
+        common: ["framework7", "framework7-vue", "moment"],
     },
     output: {
         path: config.build.assetsRoot,
@@ -41,9 +46,17 @@ module.exports = {
                 loader: 'babel-loader',
                 include: [resolve('src'), resolve('test')]
             },
+            /*{
+             test: /\.scss$/,
+             loader: ["style-loader", "css-loader", "sass-loader", "postcss-loader"]
+             },*/
             {
                 test: /\.scss$/,
-                loader: ["style-loader", "css-loader", "sass-loader"]
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    //resolve-url-loader may be chained before sass-loader if necessary
+                    use: ['css-loader', 'sass-loader']
+                })
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -62,5 +75,10 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+
+    plugins: [
+        new ExtractTextPlugin({filename: 'style.css'}),
+        new webpack.optimize.CommonsChunkPlugin({names: ['common'], filename: '[name].min.js'}),
+    ]
 }
