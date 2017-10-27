@@ -5,6 +5,7 @@
             <div class='test'>园丁 订单页面</div>
             <div class='test2'>测试rem</div>
             <div><img src="../../assets/test.png" alt=""></div>
+
         </f7-block>
     </f7-page>
 </template>
